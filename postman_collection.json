@@ -1,0 +1,319 @@
+{
+  "info": {
+    "name": "Flight Management System API",
+    "description": "Complete API collection for Flight Management System",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Passengers",
+      "item": [
+        {
+          "name": "Get All Passengers",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:5000/api/passengers"
+          }
+        },
+        {
+          "name": "Get Passenger by ID",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:5000/api/passengers/1"
+          }
+        },
+        {
+          "name": "Create Passenger",
+          "request": {
+            "method": "POST",
+            "url": "http://localhost:5000/api/passengers",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"first_name\": \"John\",\n  \"last_name\": \"Doe\",\n  \"email\": \"john.doe@example.com\",\n  \"phone\": \"9876543210\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Get Passenger Bookings",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:5000/api/passengers/1/bookings"
+          }
+        },
+        {
+          "name": "Get Passenger Booking Count",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:5000/api/passengers/1/booking-count"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Flights",
+      "item": [
+        {
+          "name": "Get All Flights",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:5000/api/flights"
+          }
+        },
+        {
+          "name": "Get Flights with Filters",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:5000/api/flights?status=Scheduled&from_city=Bangalore"
+          }
+        },
+        {
+          "name": "Get Flight by ID",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:5000/api/flights/1"
+          }
+        },
+        {
+          "name": "Get Available Seats",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:5000/api/flights/1/available-seats"
+          }
+        },
+        {
+          "name": "Get Flight Bookings",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:5000/api/flights/1/bookings"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Bookings",
+      "item": [
+        {
+          "name": "Get All Bookings",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:5000/api/bookings"
+          }
+        },
+        {
+          "name": "Get Booking by ID",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:5000/api/bookings/1"
+          }
+        },
+        {
+          "name": "Create Booking",
+          "request": {
+            "method": "POST",
+            "url": "http://localhost:5000/api/bookings",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"passenger_id\": 1,\n  \"flight_id\": 1,\n  \"seat_no\": \"15C\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Cancel Booking",
+          "request": {
+            "method": "POST",
+            "url": "http://localhost:5000/api/bookings/1/cancel"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Procedures",
+      "item": [
+        {
+          "name": "Create Booking (Stored Procedure)",
+          "request": {
+            "method": "POST",
+            "url": "http://localhost:5000/api/procedures/create-booking",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"first_name\": \"Jane\",\n  \"last_name\": \"Smith\",\n  \"email\": \"jane.smith@example.com\",\n  \"phone\": \"9876543211\",\n  \"flight_no\": \"AI101\",\n  \"seat_no\": \"14B\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Cancel Flight (Stored Procedure)",
+          "request": {
+            "method": "POST",
+            "url": "http://localhost:5000/api/procedures/cancel-flight",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"flight_no\": \"UK404\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Transfer Staff (Stored Procedure)",
+          "request": {
+            "method": "POST",
+            "url": "http://localhost:5000/api/procedures/transfer-staff",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"staff_id\": 1,\n  \"new_airport_id\": 3,\n  \"notes\": \"Temporary assignment for 6 months\"\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Analytics",
+      "item": [
+        {
+          "name": "Airline Flights by Status",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:5000/api/analytics/airline-flights"
+          }
+        },
+        {
+          "name": "Busiest Airports",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:5000/api/analytics/busiest-airports?limit=5"
+          }
+        },
+        {
+          "name": "Frequent Flyers",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:5000/api/analytics/frequent-flyers?min_bookings=1"
+          }
+        },
+        {
+          "name": "Airline Rankings",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:5000/api/analytics/airline-rankings"
+          }
+        },
+        {
+          "name": "Flights Between Cities",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:5000/api/analytics/flights-between-cities?from_city=Bangalore&to_city=Delhi&date=2025-11-01"
+          }
+        },
+        {
+          "name": "Most Frequent Flyer",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:5000/api/analytics/most-frequent-flyer"
+          }
+        },
+        {
+          "name": "Staff Transfers",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:5000/api/analytics/staff-transfers"
+          }
+        },
+        {
+          "name": "Passenger Booking Summary",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:5000/api/analytics/passenger-booking-summary"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Airlines",
+      "item": [
+        {
+          "name": "Get All Airlines",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:5000/api/airlines"
+          }
+        },
+        {
+          "name": "Get Airline Flights",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:5000/api/airlines/1/flights"
+          }
+        },
+        {
+          "name": "Get Airline Staff",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:5000/api/airlines/1/staff"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Airports",
+      "item": [
+        {
+          "name": "Get All Airports",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:5000/api/airports"
+          }
+        },
+        {
+          "name": "Get Airport Departures",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:5000/api/airports/1/departures"
+          }
+        },
+        {
+          "name": "Get Airport Arrivals",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:5000/api/airports/1/arrivals"
+          }
+        },
+        {
+          "name": "Get Airport Staff",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:5000/api/airports/1/staff"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Staff",
+      "item": [
+        {
+          "name": "Get All Staff",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:5000/api/staff"
+          }
+        },
+        {
+          "name": "Get Staff by ID",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:5000/api/staff/1"
+          }
+        },
+        {
+          "name": "Get Staff History",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:5000/api/staff/1/history"
+          }
+        }
+      ]
+    }
+  ]
+}
